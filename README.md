@@ -98,7 +98,7 @@ def init_stack(size):
     global stack, top
     stack = [None] * size
     top = -1
-    return print("스택 초기화 완료! 스택의 크기: " + str(size))
+    return print("스택 초기화 완료! 스택의 크기: " + str(size))  
 
 def print_stack():
     print("=== 스택 상태 ===")
