@@ -1,9 +1,13 @@
 202430323 이기웅
+
 11월 5일
+
 1. 큐(Queue) 자료구조의 구현 및 활용
 큐(Queue)는 먼저 들어간 데이터가 먼저 나오는 선입선출(FIFO, First In First Out) 방식의 자료구조입니다. 파이썬의 리스트(print_q)와 데이터의 앞/뒤 인덱스를 추적하는 전역 변수(front, rear)를 활용하여 큐의 주요 연산을 구현했습니다.
+
 1. 큐 초기화 (init_queue) 및 상태 출력 (print_queue)
 지정한 크기(size)만큼 비어있는(None) 리스트를 생성하고, 데이터의 맨 앞쪽을 가리키는 front와 맨 뒤쪽을 가리키는 rear를 모두 -1로 초기화합니다. print_queue 함수는 리스트의 처음부터 끝까지 순회하며 전체 큐의 상태와 현재 front, rear의 위치를 출력합니다
+
 def init_queue(size):
     global print_q, front, rear
     print_q = [None] * size
@@ -19,6 +23,7 @@ def print_queue():
     print("현재 front: " + str(front))
     print("현재 rear: " + str(rear))
     print("=================")
+
 2. 큐 꽉 참/비어있음 확인 (is_queue_full, is_queue_empty)
 데이터를 삽입하거나 추출하기 전에 큐의 상태를 확인하는 함수입니다.
 def is_queue_empty():
@@ -34,6 +39,7 @@ def is_queue_full():
         return True
     else:
         return False
+
 3. 큐 데이터 삽입(enqueue), 추출(dequeue), 확인(peek)
 def enqueue(data):
     global rear
@@ -60,6 +66,7 @@ def peek():
     else:
         temp = print_q[front + 1]
         return temp
+
 4. 큐 동작 테스트
 작성한 함수를 바탕으로 크기가 5인 큐를 초기화한 후 데이터를 삽입하고 확인하는 테스트 코드입니다. 5개의 요소를 모두 삽입하여 큐를 가득 채운 후, peek() 함수를 통해 가장 앞에 있는(다음에 추출될) 데이터를 확인합니다.
 init_queue(5)
@@ -74,12 +81,16 @@ print(peek()) # 큐의 가장 맨 앞(front+1)에 있는 데이터 확인
 print("======peek() 함수 호출 후======")
 
 print_queue()
+
 10월 29일
+
 1. 파이썬 웹 브라우저 제어 (webbrowser 모듈)
 파이썬의 내장 모듈인 webbrowser를 활용하여 기본 웹 브라우저를 열고 특정 URL로 접속하는 간단한 실습
+
 import webbrowser
 
 webbrowser.open("https://naver.com")
+
 2. 스택(Stack) 자료구조의 구현 및 활용
 스택은 나중에 들어간 데이터가 먼저 나오는 후입선출(LIFO, Last In First Out) 구조의 자료구조입니다. 파이썬의 리스트와 전역 변수(top)를 활용하여 스택의 주요 기능들을 함수로 구현
 def init_stack(size):
@@ -121,7 +132,9 @@ def peek():
     else:
         data = stack[top]
         return print("Peek 데이터: " + str(data) + ", 현재 top", top)
+
 4. 스택 동작 테스트
+
 # 크기가 7인 스택 초기화
 init_stack(7)
 print_stack()
