@@ -1,5 +1,58 @@
 # 202430323 이기웅
 
+# 11월 19일 강의 내용
+# 1.그래프(Graph) 자료구조와 인접 행렬(Adjacency Matrix) 구현
+
+그래프(Graph)는 정점(Vertex)과 간선(Edge)을 이용하여 객체 간의 관계를 표현하는 비선형 자료구조입니다.
+
+1.그래프 클래스 정의 (graph) 및 출력 함수 (print_graph)
+그래프(Graph)는 정점(Vertex)과 간선(Edge)으로 구성되며, 인접 행렬을 사용하여 구현할 수 있습니다.
+# 클래스 선언부
+class graph:
+    def __init__(self, size):
+        self.SIZE = size
+        self.graph = [[0 for _ in range(size)] for _ in range(size)]
+
+def print_graph(graph):
+    print("===" + " 그래프 출력 " + "===")
+    for row in range(graph.SIZE):
+        for col in range(graph.SIZE):
+            print(graph.graph[row][col], end=' ')
+        print()
+# 2. 무방향 그래프(G1) 구성
+
+무방향 그래프(Undirected Graph)는 정점 사이의 간선에 방향이 없는 그래프입니다.
+
+G1 = graph(4)
+G1.graph[0][1] = 1
+G1.graph[0][2] = 1
+G1.graph[0][3] = 1
+G1.graph[1][0] = 1
+G1.graph[1][2] = 1
+G1.graph[2][0] = 1
+G1.graph[2][1] = 1
+G1.graph[2][3] = 1
+G1.graph[3][0] = 1
+G1.graph[3][2] = 1
+
+print_graph(G1)
+
+# 3.방향 그래프(G3) 구성 및 출력
+
+방향 그래프(Directed Graph)는 정점 사이의 간선에 방향이 존재하는 그래프입니다.
+무방향 그래프와 달리 간선의 출발점과 도착점이 구분됩니다.
+G3 = graph(4)
+G3.graph[0][1] = 1
+G3.graph[0][2] = 1
+G3.graph[3][0] = 1
+G3.graph[3][2] = 1
+
+print('=== G3 무방향 그래프 ===')
+for row in range(G3.SIZE):
+    for col in range(G3.SIZE):
+        print(G3.graph[row][col], end=' ')
+    print()
+
 # 11월 12일 내용
 
 # 1. 이진 트리 자료구조의 구현
