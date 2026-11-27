@@ -1,6 +1,121 @@
 # 202430323 이기웅
 
+# 11월 26일 강의 내용
+# 1.재귀 호출(Recursion)의 개념과 동작 원리
+1. 재귀 호출(Recursion)의 개념
+재귀 호출이란 함수가 자기 자신을 다시 호출하는 프로그래밍 기법이다.
+복잡한 문제를 작은 문제로 나누어 해결할 수 있으며, 반복문을 사용하지 않고도 특정 작업을 반복적으로 수행할 수 있다.
+2. 재귀 호출의 동작 원리
+재귀 호출은 다음과 같은 순서로 동작한다.
+1. 함수가 자기 자신을 호출한다.
+2. 호출된 함수가 다시 자기 자신을 호출한다.
+3. 종료 조건에 도달하면 재귀 호출을 멈춘다.
+4. 이전 함수로 돌아가 남은 작업을 실행한다.
+5. 모든 함수가 종료되면 최종 결과를 반환한다.
+
+def callback(num):
+    num -= 1
+    if num == 0:
+        print("Count reached zero. Stopping execution.")
+        return
+    print("Callback function executed. count", num) # 재귀 진입 시 실행
+    callback(num)
+    print("Callback function executed. count", num) # 재귀 복귀 시 실행
+
+callback(3)
+
+# 2. 수학적 연산의 재귀 구현
+
+1. 1부터 N까지의 합 구하기 (add_numbers)
+end에서 시작하여 1씩 감소시키며 자기 자신을 호출하고, 기저 조건(end <= start)에 도달하면 1을 반환하며 역순으로 누적 합계를 계산합니다.
+
+def add_numbers(start, end):
+    if end <= start:
+        return 1
+    return end + add_numbers(start, end - 1)
+
+print(add_numbers(1, 10)) # 출력: 55
+
+2. 팩토리얼 계산 
+
+n이 1 이하가 될 때까지 재귀적으로 내려갔다가, 반환된 값(foo)에 현재의 n을 곱해 올라오며 
+5!=120을 계산합니다.
+
+def factorial(n):
+    if n <= 1:
+        print("n:", n)
+        return 1
+    print("n:", n)
+    foo = factorial(n - 1)
+    print("n:", n)
+    return n * foo
+
+print(factorial(5)) # 출력: 120
+
+3.거듭제곱 계산
+
+거듭제곱 계산이란 같은 숫자를 여러 번 곱하는 연산이다.
+
+def power(base, exponent):
+    if exponent == 0:
+        return 1
+    return base * power(base, exponent - 1)
+
+print(power(2, 4)) # 출력: 16
+
+# 3.반복 구조와 패턴 출력의 재귀 및 반복문 구현
+
+1. 반복 구조의 개념
+반복 구조란 특정 조건이 만족될 때까지 같은 작업을 여러 번 실행하는 프로그래밍 방법이다.
+반복 구조는 주로 반복문(while, for)과 재귀 호출을 이용하여 구현할 수 있다.
+
+2. 반복문을 이용한 패턴 출력
+반복문을 사용하면 정해진 횟수만큼 별(*)을 출력할 수 있다.
+
+# 재귀 호출 방식
+def countdown(n):
+    if n <= 0:
+        print("발사!!!")
+        return
+    print(n)
+    countdown(n - 1)
+
+# 반복문 방식 비교
+# def countdown(n):
+#     for i in range(n, 0, -1):
+#         print(i)
+#     print("발사!!!")
+
+countdown(5)
+
+def print_starts(n):
+    if n <= 0:
+        return
+    print_starts(n - 1) # 먼저 가장 작은 단계(1)까지 들어간 후
+    print("*" * n)      # 복귀하면서 1개부터 n개까지 순서대로 출력
+
+print_starts(5)
+
+def multiplication_table():
+    for i in range(1, 10):
+        for j in range(1, 10):
+            print(f"{i} x {j} = {i * j:2}")
+        print()
+
+multiplication_table()
+
+def arr_sum(arr, n):
+    if n <= 0:
+        return 0
+    return arr[n - 1] + arr_sum(arr, n - 1)
+
+arr = [1, 2, 3, 4, 5]
+print(arr_sum(arr, 5)) # 출력: 15
+반복문과 재귀 호출은 동일한 작업을 여러 번 수행할 수 있는 방법이다. 
+반복문은 정해진 조건에 따라 작업을 반복하고, 재귀 호출은 함수가 자기 자신을 호출하여 작업을 수행한다. 두 방법 모두 별 모양과 같은 다양한 패턴을 출력하는 데 활용할 수 있다.
+
 # 11월 19일 강의 내용
+
 # 1.그래프(Graph) 자료구조와 인접 행렬(Adjacency Matrix) 구현
 
 그래프(Graph)는 정점(Vertex)과 간선(Edge)을 이용하여 객체 간의 관계를 표현하는 비선형 자료구조입니다.
